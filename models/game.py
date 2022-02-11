@@ -9,3 +9,6 @@ class Game:
 
     def add_player(self, player: Player):
         self.players.append(player)
+
+    def remove_player(self, player: Player):
+        self.players.remove(player)
