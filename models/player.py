@@ -1,24 +1,30 @@
-import json
-from turtle import st
-
-
 class Player:
     def __init__(
         self, nickname: str, profilePhoto: str, winrate: float, level: int, id: str
     ) -> None:
-        self.nickname = nickname
-        self.profilePhoto = profilePhoto
-        self.winrate = winrate
-        self.level = level
-        self.id = id
-        self.isReady = False
-        self.manufactories = 2
-        self.thousands = 10000
-        self.raw_materials = 4
-        self.destroyer = 2
+        self.__nickname = nickname
+        self.__profilePhoto = profilePhoto
+        self.__winrate = winrate
+        self.__level = level
+        self.__id = id
+        self.__isReady = False
+        self.__manufactories = 2
+        self.__thousands = 10000
+        self.__raw_materials = 4
+        self.__destroyer = 2
+        self.__missed_payments = 0
 
-    def change_ready(self, value: bool):
-        self.isReady = value
+    def change_ready(self, value: bool) -> bool:
+        self.__isReady = value
+        return value
+
+    @property
+    def id(self):
+        return self.__id
+
+    @property
+    def isReady(self):
+        return self.__isReady
 
     def to_dict(
         self,
@@ -26,10 +32,10 @@ class Player:
         "nickname":str, "profilePhoto":str, "winrate":float, "level":int, "id":str
     ]:
         return {
-            "nickname": self.nickname,
-            "profilePhoto": self.profilePhoto,
-            "winrate": self.winrate,
-            "level": self.level,
-            "id": self.id,
-            "isReady": self.isReady,
+            "nickname": self.__nickname,
+            "profilePhoto": self.__profilePhoto,
+            "winrate": self.__winrate,
+            "level": self.__level,
+            "id": self.__id,
+            "isReady": self.__isReady,
         }

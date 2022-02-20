@@ -48,6 +48,6 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 try:
     if __name__ == "__main__":
         socketio.on_namespace(GameNamespace("/game"))
-        socketio.run(app, "0.0.0.0", 5000)
+        socketio.run(app, "0.0.0.0", 10000)
 except KeyboardInterrupt:
     exit(0)
