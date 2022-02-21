@@ -1,8 +1,10 @@
-from flask_socketio import Namespace, emit, join_room, send
+from flask_socketio import Namespace, emit, join_room
+from flask import request
 import jwt
 import shortuuid
 
 from models.game import Game
+from models.message import Message
 from models.player import Player
 
 rooms: dict[str, Game] = {}
@@ -29,6 +31,7 @@ class GameNamespace(Namespace):
             identity["winrate"],
             identity["level"],
             identity["id"],
+            request.sid,
         )
         players[identity["id"]] = player
         emit("authed", player.to_dict())
@@ -39,13 +42,13 @@ class GameNamespace(Namespace):
             join_room(data["roomId"])
             emit(
                 "user_joined",
-                room.players[data["id"]].to_dict(),
+                players[data["id"]].to_dict(),
                 to=data["roomId"],
                 include_self=False,
             )
             if len(room.players):
                 players_local = []
-                for player in room.players:
+                for (_, player) in room.players.items():
                     players_local.append(player.to_dict())
                 emit("users_list", players_local)
             room.add_player(data["id"], players[data["id"]])
@@ -66,8 +69,13 @@ class GameNamespace(Namespace):
             player = room.players.get(data["id"], False)
             if player:
                 room.player_ready(data["id"], data["isReady"])
-
-            if room.readyPlayers == len(room.players):
+                emit(
+                    "readiness_player",
+                    {"id": player.id, "isReady": player.isReady},
+                    include_self=False,
+                    to=data["roomId"],
+                )
+            if room.readyPlayers == len(room.players) and len(room.players) > 1:
                 emit("all_ready", to=data["roomId"], include_self=True)
 
     def on_leave_room(self, data):
@@ -110,6 +118,12 @@ class GameNamespace(Namespace):
             player = room.players.get(data["id"], False)
             if player:
                 room.add_produce_offer(data["offer"])
-    
-    def on_message(self, data):
-        emit("message", data, include_self=False)
+
+    def on_message_server(self, data):
+        print(data)
+        emit(
+            "message_client",
+            Message(author=data["author"], message=data["message"]).to_json(),
+            include_self=True,
+            to=data["peerId"],
+        )
