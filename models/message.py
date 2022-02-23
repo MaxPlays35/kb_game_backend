@@ -6,6 +6,7 @@ from datetime import datetime
 class Message:
     author: dict[str, str]
     message: str
+    peerId: str
     time: str = str(datetime.now())
 
     def to_json(self):
@@ -16,4 +17,5 @@ class Message:
             },
             "message": self.message,
             "time": self.time,
+            "peerId": self.peerId,
         }

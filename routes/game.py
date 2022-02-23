@@ -123,7 +123,9 @@ class GameNamespace(Namespace):
         print(data)
         emit(
             "message_client",
-            Message(author=data["author"], message=data["message"]).to_json(),
+            Message(
+                author=data["author"], message=data["message"], peerId=data["peerId"]
+            ).to_json(),
             include_self=True,
             to=data["peerId"],
         )
