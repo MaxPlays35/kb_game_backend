@@ -18,7 +18,7 @@ class Player:
         self.__manufactories = 2
         self.__thousands = 10000
         self.__raw_materials = 4
-        self.__destroyer = 2
+        self.__destroyers = 2
         self.__missed_payments = 0
         self.__isAlive = True
 
@@ -37,6 +37,33 @@ class Player:
     @property
     def peer_id(self):
         return self.__peer_id
+
+    @property
+    def raw_materials(self):
+        return self.__raw_materials
+
+    @property
+    def destroyers(self):
+        return self.__destroyers
+
+    @property
+    def manufactories(self):
+        return self.__manufactories
+
+    @property
+    def isAlive(self):
+        return self.__isAlive
+
+    def get_state(self):
+        return {
+            "money": self.__thousands,
+            "raw_materials": self.__raw_materials,
+            "destroyers": self.__destroyers,
+            "manufactories": self.__manufactories,
+        }
+
+    def withdraw_money(self, money: int):
+        self.__thousands -= money
 
     def to_dict(
         self,

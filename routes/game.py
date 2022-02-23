@@ -76,6 +76,11 @@ class GameNamespace(Namespace):
                     to=data["roomId"],
                 )
             if room.readyPlayers == len(room.players) and len(room.players) > 1:
+                emit(
+                    "game_state", room.get_state(), to=data["roomId"], include_self=True
+                )
+                for player in room.players:
+                    emit("p")
                 emit("all_ready", to=data["roomId"], include_self=True)
 
     def on_leave_room(self, data):
@@ -120,7 +125,6 @@ class GameNamespace(Namespace):
                 room.add_produce_offer(data["offer"])
 
     def on_message_server(self, data):
-        print(data)
         emit(
             "message_client",
             Message(

@@ -1,4 +1,5 @@
 from models.offers import AuctionOffer, BuildOffer, BuyOffer, ProduceOffer
+from models.player import Player
 
 
 class Bank:
@@ -19,3 +20,13 @@ class Bank:
 
     def add_buy_offer(self, offer: BuyOffer):
         self.buy_offers.append(offer)
+
+    def withdraw_money(self, player: Player, money: int = 0):
+        if money:
+            player.withdraw_money(money)
+        else:
+            player.withdraw_money(
+                300 * player.raw_materials
+                + 500 * player.destroyers
+                + 1000 * player.manufactories
+            )

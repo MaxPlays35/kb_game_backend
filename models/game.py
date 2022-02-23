@@ -1,6 +1,7 @@
-from typing import Any, Dict
+from typing import Dict
 
 from models.bank import Bank
+from models.levels import level
 
 from .offers import AuctionOffer, BuildOffer, BuyOffer, ProduceOffer
 from .player import Player
@@ -12,6 +13,8 @@ class Game:
         self.id = id
         self.readyPlayers = 0
         self.__bank = Bank()
+        self.__level = 3
+        self.__current_month = 0
 
     def add_player(self, id: str, player: Player):
         self.players.update({id: player})
@@ -36,3 +39,13 @@ class Game:
 
     def add_auction_offer(self, offer: AuctionOffer):
         self.__bank.add_auction_offer(offer)
+
+    def proceed_month(self):
+        if self.__current_month != 0:
+            for player in self.players:
+                self.__bank.withdraw_money(player)
+
+    def get_state(self):
+        alive_players = sum([int(i.isAlive) for i in self.players.values()])
+
+        return level(alive_players, self.__level)
