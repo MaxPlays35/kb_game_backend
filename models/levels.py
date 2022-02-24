@@ -14,7 +14,7 @@ def level(alive_players: int, level: int):
     return {
         "level": level,
         "volume": floor(levels[level][0] * alive_players),
-        "minPriceRow": levels[level][1],
+        "minPriceRaw": levels[level][1],
         "maxDestroyers": floor(levels[level][2] * alive_players),
         "maxPriceDestroyer": levels[level][3],
     }

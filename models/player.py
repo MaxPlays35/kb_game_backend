@@ -21,6 +21,8 @@ class Player:
         self.__destroyers = 2
         self.__missed_payments = 0
         self.__isAlive = True
+        self.__pending_destroyers = 0
+        self.__pending_manufactories = []
 
     def change_ready(self, value: bool) -> bool:
         self.__isReady = value
@@ -84,3 +86,13 @@ class Player:
             "isReady": self.__isReady,
             "isAlive": self.__isAlive,
         }
+
+    def add_pending_destroyers(self, destroyers):
+        self.__pending_destroyers += destroyers
+
+    def add_destroyers(self):
+        self.__destroyers += self.__pending_destroyers
+        self.__pending_destroyers = 0
+
+    def add_manufactories(self, data):
+        self.__pending_manufactories.append(data)

@@ -1,11 +1,11 @@
-from flask_socketio import Namespace, emit, join_room
+from flask_socketio import Namespace, emit, join_room, leave_room
 from flask import request
 import jwt
 import shortuuid
 
 from models.game import Game
 from models.message import Message
-from models.offers import ProduceOffer
+from models.offers import AuctionOffer, BuildOffer, BuyOffer, ProduceOffer
 from models.player import Player
 
 rooms: dict[str, Game] = {}
@@ -42,6 +42,12 @@ class GameNamespace(Namespace):
         if room:
             join_room(data["roomId"])
             emit(
+                "finish_connect",
+                data["roomId"],
+                to=players[data["id"]].peer_id,
+                include_self=True,
+            )
+            emit(
                 "user_joined",
                 players[data["id"]].to_dict(),
                 to=data["roomId"],
@@ -54,7 +60,7 @@ class GameNamespace(Namespace):
                 emit("users_list", players_local)
             room.add_player(data["id"], players[data["id"]])
         else:
-            emit("error", {"error": "This room does not exist!"})
+            emit("error", {"text": "This room does not exist!"})
 
     def on_create_room(self, data):
         roomId = shortuuid.ShortUUID().random(length=10)
@@ -80,8 +86,8 @@ class GameNamespace(Namespace):
                 emit(
                     "game_state", room.get_state(), to=data["roomId"], include_self=True
                 )
-                for player in room.players:
-                    emit("p")
+                for player in room.players.values():
+                    emit("user_state", player.get_state(), to=player.id)
                 emit("all_ready", to=data["roomId"], include_self=True)
 
     def on_leave_room(self, data):
@@ -96,34 +102,82 @@ class GameNamespace(Namespace):
                     include_self=False,
                     to=data["roomId"],
                 )
+                leave_room(data["roomId"])
 
-    def on_player_auction(self, data):
+    def on_auction_offer(self, data):
         room = rooms.get(data["roomId"], False)
         if room:
-            player = room.players.get(data["id"], False)
+            player = room.players.get(data["playerId"], False)
             if player:
-                room.add_auction_offer(data["offer"])
+                result = room.add_auction_offer(
+                    AuctionOffer(
+                        player_id=data["playerId"],
+                        aircrafts=data["destroyers"],
+                        price=data["price"],
+                    )
+                )
+                if not result["success"]:
+                    emit("error", {"text": result["text"]})
 
-    def on_player_buy(self, data):
+    def on_buy_offer(self, data):
         room = rooms.get(data["roomId"], False)
         if room:
-            player = room.players.get(data["id"], False)
+            player = room.players.get(data["playerId"], False)
             if player:
-                room.add_buy_offer(data["offer"])
+                result = room.add_buy_offer(
+                    BuyOffer(
+                        player_id=data["playerId"],
+                        raw_material=data["rawMaterials"],
+                        price=data["price"],
+                    )
+                )
 
-    def on_player_build(self, data):
+                if not result["success"]:
+                    emit("error", {"text": result["text"]})
+
+    def on_build_offer(self, data):
         room = rooms.get(data["roomId"], False)
         if room:
-            player = room.players.get(data["id"], False)
+            player = room.players.get(data["playerId"], False)
             if player:
-                room.add_build_offer(data["offer"])
+                result = room.add_build_offer(
+                    BuildOffer(
+                        player_id=data["playerId"], workshops=data["manufactories"]
+                    )
+                )
+                if not result["success"] and result["bankrupt"]:
+                    emit("bankrupt", to=player.peer_id)
+                    room.remove_player(data["playerId"])
+                    emit(
+                        "player_leaved",
+                        {"id": data["playerId"]},
+                        include_self=False,
+                        to=data["roomId"],
+                    )
+                    leave_room(data["roomId"])
+                    return
+                elif not result["success"]:
+                    emit("error", {"text": result["text"]})
+                    return
 
-    def on_player_produce(self, data):
+                emit("user_state", player.get_state(), to=player.peer_id)
+
+    def on_produce_offer(self, data):
         room = rooms.get(data["roomId"], False)
+        print(data)
         if room:
-            player = room.players.get(data["id"], False)
+            player = room.players.get(data["playerId"], False)
             if player:
-                room.add_produce_offer(data["offer"])
+                result = room.add_produce_offer(
+                    ProduceOffer(
+                        player_id=data["playerId"], aircrafts=data["destroyers"]
+                    )
+                )
+                if not result["success"]:
+                    emit("error", {"text": result["text"]})
+                    return
+
+                emit("user_state", player.get_state(), to=player.peer_id)
 
     def on_message_server(self, data):
         emit(
@@ -135,11 +189,10 @@ class GameNamespace(Namespace):
             to=data["peerId"],
         )
 
-    def on_produce_offer(self, data):
+    def on_end_move(self, data):
         room = rooms.get(data["roomId"], False)
         if room:
-            player = players.get(data["playerId"], False)
+            player = room.players.get(data["playerId"], False)
             if player:
-                room.add_produce_offer(
-                    ProduceOffer(data["playerId"], data["destroyers"])
-                )
+                if room.players_ended_move == len(room.players):
+                    room.proceed_month()

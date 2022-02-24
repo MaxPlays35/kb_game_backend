@@ -14,7 +14,8 @@ class Game:
         self.readyPlayers = 0
         self.__bank = Bank()
         self.__level = 3
-        self.__current_month = 0
+        self.__current_month = 1
+        self.players_ended_move = 0
 
     def add_player(self, id: str, player: Player):
         self.players.update({id: player})
@@ -28,20 +29,27 @@ class Game:
         else:
             self.readyPlayers -= 1
 
-    def add_produce_offer(self, offer: ProduceOffer) -> bool:
-        return self.__bank.add_produce_offer(offer, self.players[offer.player_id])
+    def add_produce_offer(self, offer: ProduceOffer):
+        return self.__bank.proceed_produce_offer(offer, self.players[offer.player_id])
 
     def add_buy_offer(self, offer: BuyOffer):
         self.__bank.add_buy_offer(offer)
 
     def add_build_offer(self, offer: BuildOffer):
-        self.__bank.add_build_offer(offer)
+        return self.__bank.add_build_offer(
+            offer, self.players[offer.player_id], self.__current_month
+        )
 
     def add_auction_offer(self, offer: AuctionOffer):
         self.__bank.add_auction_offer(offer)
 
     def proceed_month(self):
-        if self.__current_month != 0:
+        kicked_players = []
+        current_state = level(
+            sum([int(i.isAlive) for i in self.players.values()]), self.__level
+        )
+        self.__bank.proceed_buy_offers(current_state, self.players)
+        if self.__current_month != 1:
             for player in self.players:
                 self.__bank.withdraw_money(player)
 
