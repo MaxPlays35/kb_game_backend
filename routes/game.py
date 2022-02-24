@@ -5,6 +5,7 @@ import shortuuid
 
 from models.game import Game
 from models.message import Message
+from models.offers import ProduceOffer
 from models.player import Player
 
 rooms: dict[str, Game] = {}
@@ -133,3 +134,12 @@ class GameNamespace(Namespace):
             include_self=True,
             to=data["peerId"],
         )
+
+    def on_produce_offer(self, data):
+        room = rooms.get(data["roomId"], False)
+        if room:
+            player = players.get(data["playerId"], False)
+            if player:
+                room.add_produce_offer(
+                    ProduceOffer(data["playerId"], data["destroyers"])
+                )

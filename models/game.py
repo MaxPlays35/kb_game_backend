@@ -28,8 +28,8 @@ class Game:
         else:
             self.readyPlayers -= 1
 
-    def add_produce_offer(self, offer: ProduceOffer):
-        self.__bank.add_produce_offer(offer)
+    def add_produce_offer(self, offer: ProduceOffer) -> bool:
+        return self.__bank.add_produce_offer(offer, self.players[offer.player_id])
 
     def add_buy_offer(self, offer: BuyOffer):
         self.__bank.add_buy_offer(offer)

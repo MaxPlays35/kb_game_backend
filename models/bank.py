@@ -9,8 +9,12 @@ class Bank:
         self.auction_offers: list[AuctionOffer] = []
         self.buy_offers: list[BuyOffer] = []
 
-    def add_produce_offer(self, offer: ProduceOffer):
-        self.produce_offers.append(offer)
+    def proceed_produce_offer(self, offer: ProduceOffer, player: Player):
+        if player.money - 2000 * offer.aircrafts > 0:
+            player.withdraw_money(2000 * offer.aircrafts)
+            return True
+
+        return False
 
     def add_build_offer(self, offer: BuildOffer):
         self.build_offers.append(offer)

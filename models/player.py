@@ -54,6 +54,10 @@ class Player:
     def isAlive(self):
         return self.__isAlive
 
+    @property
+    def money(self):
+        return self.__thousands
+
     def get_state(self):
         return {
             "money": self.__thousands,
