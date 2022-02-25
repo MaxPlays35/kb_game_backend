@@ -22,7 +22,7 @@ class Player:
         self.__missed_payments = 0
         self.__isAlive = True
         self.__pending_destroyers = 0
-        self.__pending_manufactories = []
+        self.pending_manufactories = []
 
     def change_ready(self, value: bool) -> bool:
         self.__isReady = value
@@ -69,7 +69,11 @@ class Player:
         }
 
     def withdraw_money(self, money: int):
-        self.__thousands -= money
+        if self.__thousands - money > 0:
+            self.__thousands -= money
+            return True
+
+        return False
 
     def to_dict(
         self,
@@ -96,3 +100,12 @@ class Player:
 
     def add_manufactories(self, data):
         self.__pending_manufactories.append(data)
+
+    def add_raw_materials(self, raw_materials: int):
+        self.__raw_materials += raw_materials
+
+    def add_money(self, money: int):
+        self.__thousands += money
+
+    def remove_destroyers(self, destroyers):
+        self.__destroyers -= destroyers

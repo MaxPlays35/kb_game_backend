@@ -1,3 +1,4 @@
+from unittest import result
 from flask_socketio import Namespace, emit, join_room, leave_room
 from flask import request
 import jwt
@@ -60,7 +61,7 @@ class GameNamespace(Namespace):
                 emit("users_list", players_local)
             room.add_player(data["id"], players[data["id"]])
         else:
-            emit("error", {"text": "This room does not exist!"})
+            emit("error", {"text": "This room does not exist!", "error": "Error "})
 
     def on_create_room(self, data):
         roomId = shortuuid.ShortUUID().random(length=10)
@@ -117,7 +118,7 @@ class GameNamespace(Namespace):
                     )
                 )
                 if not result["success"]:
-                    emit("error", {"text": result["text"]})
+                    emit("error", {"text": result["text"], "error": "Error"})
 
     def on_buy_offer(self, data):
         room = rooms.get(data["roomId"], False)
@@ -174,7 +175,7 @@ class GameNamespace(Namespace):
                     )
                 )
                 if not result["success"]:
-                    emit("error", {"text": result["text"]})
+                    emit("error", {"text": result["text"], "error": "Error"})
                     return
 
                 emit("user_state", player.get_state(), to=player.peer_id)
@@ -194,5 +195,31 @@ class GameNamespace(Namespace):
         if room:
             player = room.players.get(data["playerId"], False)
             if player:
+                room.players_ended_move += 1
                 if room.players_ended_move == len(room.players):
-                    room.proceed_month()
+                    result = room.proceed_month()
+                    for player in result["kicked_players"]:
+                        emit("bankrupt", to=result["kicked_players"][player].peer_id)
+                        room.remove_player(player)
+                        emit(
+                            "player_leaved",
+                            {"id": data["playerId"]},
+                            include_self=False,
+                            to=data["roomId"],
+                        )
+                        leave_room(
+                            data["roomId"], sid=result["kicked_players"][player].peer_id
+                        )
+                    if result["end"]:
+                        pass
+
+                    if len(room.players) == 1:
+                        emit(
+                            "win",
+                            {"text": "You win!"},
+                            to=room.players.values()[0].peer_id,
+                        )
+                    else:
+                        emit("game_state", room.get_state(), to=data["roomId"])
+                        for player in room.players.values():
+                            emit("user_state", player.get_state(), to=player.peer_id)

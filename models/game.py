@@ -1,3 +1,4 @@
+from random import choices, random
 from typing import Dict
 
 from models.bank import Bank
@@ -16,6 +17,7 @@ class Game:
         self.__level = 3
         self.__current_month = 1
         self.players_ended_move = 0
+        self.max_months = months if months else 9999
 
     def add_player(self, id: str, player: Player):
         self.players.update({id: player})
@@ -33,7 +35,7 @@ class Game:
         return self.__bank.proceed_produce_offer(offer, self.players[offer.player_id])
 
     def add_buy_offer(self, offer: BuyOffer):
-        self.__bank.add_buy_offer(offer)
+        return self.__bank.add_buy_offer(offer)
 
     def add_build_offer(self, offer: BuildOffer):
         return self.__bank.add_build_offer(
@@ -41,19 +43,62 @@ class Game:
         )
 
     def add_auction_offer(self, offer: AuctionOffer):
-        self.__bank.add_auction_offer(offer)
+        return self.__bank.add_auction_offer(offer)
 
     def proceed_month(self):
-        kicked_players = []
+        self.players_ended_move = 0
+        kicked_players = {}
         current_state = level(
             sum([int(i.isAlive) for i in self.players.values()]), self.__level
         )
         self.__bank.proceed_buy_offers(current_state, self.players)
-        if self.__current_month != 1:
+        self.__bank.proceed_auction_offers(current_state, self.players)
+        self.__current_month += 1
+        if self.__current_month != 2:
             for player in self.players:
-                self.__bank.withdraw_money(player)
+                if self.__bank.withdraw_money(player) == False:
+                    kicked_players.update({player: self.players[player]})
+
+        for player in self.players.values():
+            player.add_destroyers()
+
+        result = self.__bank.proceed_build_offers(self.__current_month, self.players)
+        if result:
+            kicked_players = kicked_players | result
+
+        if self.__level == 1:
+            self.__level = choices(
+                [1, 2, 3, 4, 5], [1 / 3, 1 / 3, 1 / 6, 1 / 12, 1 / 12]
+            )[0]
+        elif self.__level == 2:
+            self.__level = choices(
+                [1, 2, 3, 4, 5], [1 / 4, 1 / 3, 1 / 4, 1 / 12, 1 / 12]
+            )[0]
+        elif self.__level == 3:
+            self.__level = choices(
+                [1, 2, 3, 4, 5], [1 / 12, 1 / 4, 1 / 3, 1 / 4, 1 / 12]
+            )[0]
+        elif self.__level == 4:
+            self.__level = choices(
+                [1, 2, 3, 4, 5], [1 / 12, 1 / 12, 1 / 4, 1 / 3, 1 / 4]
+            )[0]
+        else:
+            self.__level = choices(
+                [1, 2, 3, 4, 5], [1 / 12, 1 / 12, 1 / 6, 1 / 3, 1 / 4]
+            )[0]
+
+        return {
+            "state": self.get_state(),
+            "kicked_players": kicked_players,
+            "end": self.__current_month == self.max_months,
+        }
 
     def get_state(self):
         alive_players = sum([int(i.isAlive) for i in self.players.values()])
+        print(
+            level(alive_players, self.__level) | {"currentMonth": self.__current_month}
+        )
 
-        return level(alive_players, self.__level)
+        return level(alive_players, self.__level) | {
+            "currentMonth": self.__current_month
+        }

@@ -1,3 +1,4 @@
+import random
 from models.offers import AuctionOffer, BuildOffer, BuyOffer, ProduceOffer
 from models.player import Player
 
@@ -8,6 +9,8 @@ class Bank:
         self.build_offers: set[str] = set()
         self.auction_offers: dict[str, AuctionOffer] = {}
         self.buy_offers: dict[str, BuyOffer] = {}
+        self.buy_offers_tech: dict[int, list[BuyOffer]] = {}
+        self.auction_offers_tech: dict[int, list[BuyOffer]] = {}
 
     def proceed_produce_offer(self, offer: ProduceOffer, player: Player):
         if offer.aircrafts > player.manufactories:
@@ -60,25 +63,112 @@ class Bank:
     def add_auction_offer(self, offer: AuctionOffer):
         if not offer.player_id in self.auction_offers:
             self.auction_offers.update({offer.player_id: offer})
+            if offer.price in self.auction_offers_tech:
+                self.auction_offers_tech[offer.price].append(offer)
+            else:
+                self.auction_offers_tech[offer.price] = [offer]
             return {"success": True}
 
         return {"success": False, "text": "You have already sent auction offer"}
 
+    def proceed_auction_offers(self, current_state, players: dict[str, Player]):
+        for price in sorted(self.auction_offers_tech.keys()):
+            a = len(self.auction_offers_tech[price])
+            while (
+                len(self.auction_offers_tech[price]) > 0
+                and current_state["maxDestroyers"] > 0
+            ):
+                offer: AuctionOffer = random.choice(self.auction_offers_tech[price])
+                self.auction_offers_tech[price].remove(offer)
+                if current_state["maxDestroyers"] >= offer.aircrafts:
+                    if (
+                        players[offer.player_id].destroyers - offer.aircrafts >= 0
+                        and offer.price <= current_state["maxPriceDestroyer"]
+                    ):
+                        players[offer.player_id].add_money(
+                            offer.price * offer.aircrafts
+                        )
+                        players[offer.player_id].remove_destroyers(offer.aircrafts)
+                        current_state["maxDestroyers"] -= offer.aircrafts
+                else:
+                    if (
+                        players[offer.player_id].money
+                        - current_state["maxDestroyers"] * offer.price
+                        > 0
+                        and offer.price <= current_state["maxPriceDestroyer"]
+                    ):
+                        players[offer.player_id].add_money(
+                            offer.aircrafts * offer.price
+                        )
+                        players[offer.player_id].remove_destroyers(
+                            current_state["maxDestroyers"]
+                        )
+                        current_state["maxDestroyers"] = 0
+
+        self.auction_offers = set()
+        self.auction_offers_tech = {}
+
     def add_buy_offer(self, offer: BuyOffer):
         if not offer.player_id in self.buy_offers:
             self.buy_offers.update({offer.player_id: offer})
+            if offer.price in self.buy_offers_tech:
+                self.buy_offers_tech[offer.price].append(offer)
+            else:
+                self.buy_offers_tech[offer.price] = [offer]
             return {"success": True}
 
         return {"success": False, "text": "You have already sent buy offer"}
 
-    def proceed_buy_offers(self, current_state, players: list[Player]):
-        pass
+    def proceed_buy_offers(self, current_state, players: dict[str, Player]):
+        for price in sorted(self.buy_offers_tech.keys(), reverse=True):
+            while len(self.buy_offers_tech[price]) > 0 and current_state["volume"] > 0:
+                offer: BuyOffer = random.choice(self.buy_offers_tech[price])
+                self.buy_offers_tech[price].remove(offer)
+                if current_state["volume"] >= offer.raw_material:
+                    if (
+                        players[offer.player_id].money
+                        - offer.price * offer.raw_material
+                        > 0
+                        and offer.price >= current_state["minPriceRaw"]
+                    ):
+                        players[offer.player_id].add_raw_materials(offer.raw_material)
+                        players[offer.player_id].withdraw_money(
+                            offer.price * offer.raw_material
+                        )
+                        current_state["volume"] -= offer.raw_material
+                else:
+                    if (
+                        players[offer.player_id].money
+                        - current_state["volume"] * offer.raw_material
+                        > 0
+                        and offer.price >= current_state["minPriceRaw"]
+                    ):
+                        players[offer.player_id].add_raw_materials(offer.raw_material)
+                        players[offer.player_id].withdraw_money(
+                            offer.price * current_state["volume"]
+                        )
+                        current_state["volume"] = 0
+
+        self.buy_offers = set()
+        self.buy_offers_tech = {}
+
+    def proceed_build_offers(self, current_month: int, players: dict[str, Player]):
+        kicked_players: dict[str, Player] = {}
+        for player in players:
+            workshops = players[player].pending_manufactories
+            for month in workshops:
+                if month == current_month:
+                    if not players[player].money - workshops[month] * 2500 > 0:
+                        kicked_players.update({player: players[player]})
+                        break
+
+        return kicked_players
 
     def withdraw_money(self, player: Player, money: int = 0):
         if money:
             player.withdraw_money(money)
         else:
-            player.withdraw_money(
+            return player.withdraw_money(
                 300 * player.raw_materials
                 + 500 * player.destroyers
                 + 1000 * player.manufactories
