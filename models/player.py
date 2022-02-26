@@ -8,18 +8,17 @@ class Player:
         id: str,
         peer_id: str,
     ) -> None:
-        self.__nickname = nickname
-        self.__profilePhoto = profilePhoto
-        self.__winrate = winrate
-        self.__level = level
-        self.__id = id
+        self.nickname = nickname
+        self.profilePhoto = profilePhoto
+        self.winrate = winrate
+        self.level = level
+        self.id = id
         self.__peer_id = peer_id
         self.__isReady = False
         self.__manufactories = 2
         self.__thousands = 10000
         self.__raw_materials = 4
         self.__destroyers = 2
-        self.__missed_payments = 0
         self.__isAlive = True
         self.__pending_destroyers = 0
         self.pending_manufactories = []
@@ -27,10 +26,6 @@ class Player:
     def change_ready(self, value: bool) -> bool:
         self.__isReady = value
         return value
-
-    @property
-    def id(self):
-        return self.__id
 
     @property
     def isReady(self):
@@ -81,11 +76,11 @@ class Player:
         "nickname":str, "profilePhoto":str, "winrate":float, "level":int, "id":str
     ]:
         return {
-            "nickname": self.__nickname,
-            "profilePhoto": self.__profilePhoto,
-            "winrate": self.__winrate,
-            "level": self.__level,
-            "id": self.__id,
+            "nickname": self.nickname,
+            "profilePhoto": self.profilePhoto,
+            "winrate": self.winrate,
+            "level": self.level,
+            "id": self.id,
             "peerId": self.__peer_id,
             "isReady": self.__isReady,
             "isAlive": self.__isAlive,
@@ -98,8 +93,11 @@ class Player:
         self.__destroyers += self.__pending_destroyers
         self.__pending_destroyers = 0
 
+    def add_pending_destroyers(self, destroyers):
+        self.__pending_destroyers += destroyers
+
     def add_manufactories(self, data):
-        self.__pending_manufactories.append(data)
+        self.pending_manufactories.append(data)
 
     def add_raw_materials(self, raw_materials: int):
         self.__raw_materials += raw_materials
@@ -109,3 +107,6 @@ class Player:
 
     def remove_destroyers(self, destroyers):
         self.__destroyers -= destroyers
+
+    def remove_raw_materials(self, raw_materials):
+        self.__raw_materials -= raw_materials

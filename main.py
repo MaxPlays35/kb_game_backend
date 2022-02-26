@@ -1,10 +1,10 @@
-from operator import le
 import random
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request, make_response
 from flask_socketio import SocketIO
 from flask_cors import CORS
 import jwt
 import shortuuid
+import api.firebase
 
 from routes.game import GameNamespace
 import logging
@@ -26,20 +26,51 @@ def getImage():
 
 @app.post("/login")
 def login():
-    player = {
-        "nickname": shortuuid.ShortUUID().random(length=15),
-        "profilePhoto": "braytech.png",
-        "winrate": random.randint(0, 100),
-        "level": random.randint(1, 10),
-        "id": shortuuid.ShortUUID().random(length=20),
-    }
+    data = request.json
+    result = api.firebase.FireBase().login_user(
+        login=data["login"], password=data["password"]
+    )
 
-    return jsonify(
-        player=player,
-        token=jwt.encode(
-            player,
-            app.config["SECRET_KEY"],
+    if not result["success"]:
+        return jsonify(result), 200
+
+    return (
+        jsonify(
+            player=result["user"],
+            token=jwt.encode(
+                result["user"],
+                app.config["SECRET_KEY"],
+            ),
+            error=result["error"],
+            success=result["success"],
+            text=result["text"],
         ),
+        200,
+    )
+
+
+@app.post("/register")
+def register():
+    data = request.json
+    result = api.firebase.FireBase().register_user(
+        login=data["login"], password=data["password"]
+    )
+
+    if not result["success"]:
+        return jsonify(result), 200
+
+    return (
+        jsonify(
+            player=result["user"],
+            token=jwt.encode(
+                result["user"],
+                app.config["SECRET_KEY"],
+            ),
+            error=result["error"],
+            success=result["success"],
+            text=result["text"],
+        ),
+        200,
     )
 
 

@@ -16,7 +16,7 @@ class Game:
         self.__bank = Bank()
         self.__level = 3
         self.__current_month = 1
-        self.players_ended_move = 0
+        self.players_ended_move = set()
         self.max_months = months if months else 9999
 
     def add_player(self, id: str, player: Player):
@@ -32,7 +32,11 @@ class Game:
             self.readyPlayers -= 1
 
     def add_produce_offer(self, offer: ProduceOffer):
-        return self.__bank.proceed_produce_offer(offer, self.players[offer.player_id])
+        return self.__bank.proceed_produce_offer(
+            level(sum([int(i.isAlive) for i in self.players.values()]), self.__level),
+            offer,
+            self.players[offer.player_id],
+        )
 
     def add_buy_offer(self, offer: BuyOffer):
         return self.__bank.add_buy_offer(offer)
@@ -46,7 +50,7 @@ class Game:
         return self.__bank.add_auction_offer(offer)
 
     def proceed_month(self):
-        self.players_ended_move = 0
+        self.players_ended_move = set()
         kicked_players = {}
         current_state = level(
             sum([int(i.isAlive) for i in self.players.values()]), self.__level
@@ -56,13 +60,14 @@ class Game:
         self.__current_month += 1
         if self.__current_month != 2:
             for player in self.players:
-                if self.__bank.withdraw_money(player) == False:
+                if self.__bank.withdraw_money(self.players[player]) == False:
                     kicked_players.update({player: self.players[player]})
 
         for player in self.players.values():
             player.add_destroyers()
 
         result = self.__bank.proceed_build_offers(self.__current_month, self.players)
+        self.__bank.clear()
         if result:
             kicked_players = kicked_players | result
 
@@ -100,5 +105,6 @@ class Game:
         )
 
         return level(alive_players, self.__level) | {
-            "currentMonth": self.__current_month
+            "currentMonth": self.__current_month,
+            "endless": self.max_months == 9999,
         }

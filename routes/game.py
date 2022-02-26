@@ -1,4 +1,3 @@
-from unittest import result
 from flask_socketio import Namespace, emit, join_room, leave_room
 from flask import request
 import jwt
@@ -8,9 +7,26 @@ from models.game import Game
 from models.message import Message
 from models.offers import AuctionOffer, BuildOffer, BuyOffer, ProduceOffer
 from models.player import Player
+import api.firebase
+
+firebase = api.firebase.FireBase()
+
 
 rooms: dict[str, Game] = {}
 players: dict[str, Player] = {}
+
+
+def cap(player: Player, current_state):
+    pend = sum([list(i.values())[0] for i in player.pending_manufactories])
+    score = 0
+    score += player.manufactories * 5000
+    score += pend * 5000
+    score += player.raw_materials * current_state["minPriceRaw"]
+    score += player.destroyers * current_state["maxPriceDestroyer"]
+    score += player.money
+    score -= pend * 2500
+
+    return score
 
 
 class GameNamespace(Namespace):
@@ -65,7 +81,7 @@ class GameNamespace(Namespace):
 
     def on_create_room(self, data):
         roomId = shortuuid.ShortUUID().random(length=10)
-        game = Game(roomId)
+        game = Game(roomId, data["months"])
         game.add_player(data["id"], players[data["id"]])
         rooms[roomId] = game
         emit("room_id", roomId)
@@ -195,8 +211,14 @@ class GameNamespace(Namespace):
         if room:
             player = room.players.get(data["playerId"], False)
             if player:
-                room.players_ended_move += 1
-                if room.players_ended_move == len(room.players):
+                if data["playerId"] in room.players_ended_move:
+                    emit(
+                        "error",
+                        {"error": "Error", "text": "You have already ended move"},
+                    )
+                else:
+                    room.players_ended_move.add(data["playerId"])
+                if len(room.players_ended_move) == len(room.players):
                     result = room.proceed_month()
                     for player in result["kicked_players"]:
                         emit("bankrupt", to=result["kicked_players"][player].peer_id)
@@ -211,13 +233,33 @@ class GameNamespace(Namespace):
                             data["roomId"], sid=result["kicked_players"][player].peer_id
                         )
                     if result["end"]:
-                        pass
+                        players = list(room.players.values())
+                        win_player = sorted(
+                            players, key=lambda item: cap(item), reverse=True
+                        )[0]
+                        emit(
+                            "win",
+                            {"error": "Victory", "text": "You win!"},
+                            to=win_player.peer_id,
+                        )
+                        players.remove(win_player)
+                        room.remove_player(player.id)
+                        leave_room(data["roomId"], sid=win_player.peer_id)
+                        for player in players:
+                            emit(
+                                "win",
+                                {"error": "Survived", "text": "You survived!"},
+                                to=player.peer_id,
+                            )
+                            room.remove_player(player.id)
+                            leave_room(data["roomId"], sid=player.peer_id)
+                        return
 
                     if len(room.players) == 1:
                         emit(
                             "win",
-                            {"text": "You win!"},
-                            to=room.players.values()[0].peer_id,
+                            {"error": "Victory", "text": "You win!"},
+                            to=list(room.players.values())[0].peer_id,
                         )
                     else:
                         emit("game_state", room.get_state(), to=data["roomId"])

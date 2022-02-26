@@ -12,20 +12,25 @@ class Bank:
         self.buy_offers_tech: dict[int, list[BuyOffer]] = {}
         self.auction_offers_tech: dict[int, list[BuyOffer]] = {}
 
-    def proceed_produce_offer(self, offer: ProduceOffer, player: Player):
+    def proceed_produce_offer(self, current_state, offer: ProduceOffer, player: Player):
         if offer.aircrafts > player.manufactories:
             return {
                 "success": False,
                 "text": "You can't build more destroyers",
             }
 
-        if player.money - 2000 * offer.aircrafts > 0:
+        if (
+            player.money - 2000 * offer.aircrafts > 0
+            and player.raw_materials >= offer.aircrafts
+        ):
             if player.id in self.produce_offers:
                 return {
                     "success": False,
                     "text": "You have already produced destroyers",
                 }
             player.withdraw_money(2000 * offer.aircrafts)
+            player.remove_raw_materials(offer.aircrafts)
+            player.add_pending_destroyers(offer.aircrafts)
             self.produce_offers.add(player.id)
             return {"success": True}
 
@@ -44,7 +49,7 @@ class Bank:
         if player.money - 2500 * offer.workshops > 0:
             if (
                 player.manufactories
-                + sum([i.items()[1] for i in player.__pending_manufactories])
+                + sum([i.items()[1] for i in player.pending_manufactories])
                 + offer.workshops
                 > 6
             ):
@@ -73,7 +78,6 @@ class Bank:
 
     def proceed_auction_offers(self, current_state, players: dict[str, Player]):
         for price in sorted(self.auction_offers_tech.keys()):
-            a = len(self.auction_offers_tech[price])
             while (
                 len(self.auction_offers_tech[price]) > 0
                 and current_state["maxDestroyers"] > 0
@@ -173,3 +177,7 @@ class Bank:
                 + 500 * player.destroyers
                 + 1000 * player.manufactories
             )
+
+    def clear(self):
+        self.produce_offers = set()
+        self.build_offers = set()
