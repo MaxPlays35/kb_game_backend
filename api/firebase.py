@@ -31,7 +31,7 @@ class FireBase:
         return {"error": "", "user": response, "success": True, "text": ""}
 
     def register_user(self, login: str, password: str):
-        if requests.get(self.base_usr + f"/players/{login}.json").json():
+        if requests.get(self.base_usr + f"/players/{login}.json").json() is not None:
             return {
                 "error": "Error",
                 "user": None,

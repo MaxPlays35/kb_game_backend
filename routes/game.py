@@ -206,6 +206,9 @@ class GameNamespace(Namespace):
             to=data["peerId"],
         )
 
+    def on_disconnect_user(self, data):
+        print(data)
+
     def on_end_move(self, data):
         room = rooms.get(data["roomId"], False)
         if room:
