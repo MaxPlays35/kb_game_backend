@@ -61,6 +61,7 @@ class Player:
             "raw_materials": self.__raw_materials,
             "destroyers": self.__destroyers,
             "manufactories": self.__manufactories,
+            "player_id": self.id,
         }
 
     def withdraw_money(self, money: int):
@@ -93,8 +94,8 @@ class Player:
         self.__destroyers += self.__pending_destroyers
         self.__pending_destroyers = 0
 
-    def add_pending_destroyers(self, destroyers):
-        self.__pending_destroyers += destroyers
+    def add_pending_manufactories(self, offer):
+        self.__manufactories += offer["workshops"]
 
     def add_manufactories(self, data):
         self.pending_manufactories.append(data)
@@ -110,3 +111,13 @@ class Player:
 
     def remove_raw_materials(self, raw_materials):
         self.__raw_materials -= raw_materials
+
+    def clean(self):
+        self.__isReady = False
+        self.__manufactories = 2
+        self.__thousands = 10000
+        self.__raw_materials = 4
+        self.__destroyers = 2
+        self.__isAlive = True
+        self.__pending_destroyers = 0
+        self.pending_manufactories = []

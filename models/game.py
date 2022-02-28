@@ -23,6 +23,7 @@ class Game:
         self.players.update({id: player})
 
     def remove_player(self, id):
+        self.players[id].clean()
         del self.players[id]
 
     def player_ready(self, id: str, value: bool):
@@ -39,7 +40,7 @@ class Game:
         )
 
     def add_buy_offer(self, offer: BuyOffer):
-        return self.__bank.add_buy_offer(offer)
+        return self.__bank.add_buy_offer(offer, self.players[offer.player_id])
 
     def add_build_offer(self, offer: BuildOffer):
         return self.__bank.add_build_offer(
@@ -47,7 +48,7 @@ class Game:
         )
 
     def add_auction_offer(self, offer: AuctionOffer):
-        return self.__bank.add_auction_offer(offer)
+        return self.__bank.add_auction_offer(offer, self.players[offer.player_id])
 
     def proceed_month(self):
         self.players_ended_move = set()
@@ -68,6 +69,8 @@ class Game:
 
         result = self.__bank.proceed_build_offers(self.__current_month, self.players)
         self.__bank.clear()
+        for player in self.players.values():
+            print(player.get_state())
         if result:
             kicked_players = kicked_players | result
 

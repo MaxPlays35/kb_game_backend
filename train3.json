@@ -1,0 +1,193 @@
+{'level': 3, 'volume': 4, 'minPriceRaw': 500, 'maxDestroyers': 4, 'maxPriceDestroyer': 5500, 'currentMonth': 1}
+{'money': 10000, 'raw_materials': 4, 'destroyers': 2, 'manufactories': 2, 'player_id': '5rmKoqwyBSJLVUVm79fb'} 
+{'money': 10000, 'raw_materials': 4, 'destroyers': 2, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'raw_material': 4, 'price': 600, 'type': 'BuyOffer'}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'price': 5500, 'type': 'AuctionOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 1, 'price': 500, 'type': 'BuyOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'price': 5500, 'type': 'AuctionOffer'}
+{'money': 14600, 'raw_materials': 6, 'destroyers': 2, 'manufactories': 2, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 11500, 'raw_materials': 2, 'destroyers': 3, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 3, 'volume': 4, 'minPriceRaw': 500, 'maxDestroyers': 4, 'maxPriceDestroyer': 5500, 'currentMonth': 2}
+{'level': 3, 'volume': 4, 'minPriceRaw': 500, 'maxDestroyers': 4, 'maxPriceDestroyer': 5500, 'currentMonth': 2}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'workshops': 1, 'price': 5000, 'type': 'BuildOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 1, 'price': 500, 'type': 'BuyOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'price': 5500, 'type': 'AuctionOffer'}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'price': 5500, 'type': 'AuctionOffer'}
+{'money': 15900, 'raw_materials': 4, 'destroyers': 2, 'manufactories': 2, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 9200, 'raw_materials': 1, 'destroyers': 4, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'}  
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 3}
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 3}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'price': 5899, 'type': 'AuctionOffer'}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 1, 'price': 650, 'type': 'BuyOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'price': 6000, 'type': 'AuctionOffer'}
+{'money': 21098, 'raw_materials': 2, 'destroyers': 2, 'manufactories': 2, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 16950, 'raw_materials': 2, 'destroyers': 2, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 4, 'volume': 5, 'minPriceRaw': 400, 'maxDestroyers': 3, 'maxPriceDestroyer': 5000, 'currentMonth': 4}
+{'level': 4, 'volume': 5, 'minPriceRaw': 400, 'maxDestroyers': 3, 'maxPriceDestroyer': 5000, 'currentMonth': 4}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'raw_material': 4, 'price': 450, 'type': 'BuyOffer'}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 1, 'price': 4500, 'type': 'AuctionOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 2, 'price': 400, 'type': 'BuyOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 1, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'price': 5000, 'type': 'AuctionOffer'}
+{'money': 16098, 'raw_materials': 4, 'destroyers': 3, 'manufactories': 2, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 16150, 'raw_materials': 3, 'destroyers': 2, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 5}
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 5}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 3, 'price': 5800, 'type': 'AuctionOffer'}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'raw_material': 3, 'price': 650, 'type': 'BuyOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 1, 'price': 650, 'type': 'BuyOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 1, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'price': 6000, 'type': 'AuctionOffer'}
+{'money': 24698, 'raw_materials': 5, 'destroyers': 2, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 16100, 'raw_materials': 3, 'destroyers': 2, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 1, 'volume': 2, 'minPriceRaw': 800, 'maxDestroyers': 6, 'maxPriceDestroyer': 6500, 'currentMonth': 6}
+{'level': 1, 'volume': 2, 'minPriceRaw': 800, 'maxDestroyers': 6, 'maxPriceDestroyer': 6500, 'currentMonth': 6}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 3, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 3, 'type': 'ProduceOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'price': 6500, 'type': 'AuctionOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 1, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'price': 6500, 'type': 'AuctionOffer'}
+{'money': 28098, 'raw_materials': 2, 'destroyers': 3, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 24500, 'raw_materials': 2, 'destroyers': 1, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 7}
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 7}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'price': 6000, 'type': 'AuctionOffer'}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'raw_material': 3, 'price': 650, 'type': 'BuyOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 1, 'price': 650, 'type': 'BuyOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'price': 6000, 'type': 'AuctionOffer'}
+{'money': 29748, 'raw_materials': 3, 'destroyers': 3, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 24500, 'raw_materials': 0, 'destroyers': 2, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 8}
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 8}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'price': 6000, 'type': 'AuctionOffer'}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 3, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 3, 'type': 'ProduceOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'price': 6000, 'type': 'AuctionOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'raw_material': 3, 'price': 650, 'type': 'BuyOffer'}
+{'money': 29398, 'raw_materials': 3, 'destroyers': 4, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 34500, 'raw_materials': 0, 'destroyers': 0, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 3, 'volume': 4, 'minPriceRaw': 500, 'maxDestroyers': 4, 'maxPriceDestroyer': 5500, 'currentMonth': 9}
+{'level': 3, 'volume': 4, 'minPriceRaw': 500, 'maxDestroyers': 4, 'maxPriceDestroyer': 5500, 'currentMonth': 9}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 3, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 3, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 4, 'price': 500, 'type': 'BuyOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'raw_material': 3, 'price': 500, 'type': 'BuyOffer'}
+{'money': 15998, 'raw_materials': 3, 'destroyers': 7, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 30800, 'raw_materials': 4, 'destroyers': 0, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 10}
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 10}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 7, 'price': 5500, 'type': 'AuctionOffer'}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 3, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 3, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 1, 'price': 650, 'type': 'BuyOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'money': 3498, 'raw_materials': 0, 'destroyers': 10, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 23250, 'raw_materials': 3, 'destroyers': 2, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 1, 'volume': 2, 'minPriceRaw': 800, 'maxDestroyers': 6, 'maxPriceDestroyer': 6500, 'currentMonth': 11}
+{'level': 1, 'volume': 2, 'minPriceRaw': 800, 'maxDestroyers': 6, 'maxPriceDestroyer': 6500, 'currentMonth': 11}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 5, 'price': 5500, 'type': 'AuctionOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'price': 6500, 'type': 'AuctionOffer'}
+{'money': 25498, 'raw_materials': 0, 'destroyers': 5, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 29450, 'raw_materials': 1, 'destroyers': 3, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 3, 'volume': 4, 'minPriceRaw': 500, 'maxDestroyers': 4, 'maxPriceDestroyer': 5500, 'currentMonth': 12}
+{'level': 3, 'volume': 4, 'minPriceRaw': 500, 'maxDestroyers': 4, 'maxPriceDestroyer': 5500, 'currentMonth': 12}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'raw_material': 3, 'price': 500, 'type': 'BuyOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 5, 'price': 5250, 'type': 'AuctionOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 1, 'price': 500, 'type': 'BuyOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 1, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'price': 5500, 'type': 'AuctionOffer'}
+{'money': 45848, 'raw_materials': 3, 'destroyers': 1, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 23150, 'raw_materials': 1, 'destroyers': 4, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 3, 'volume': 4, 'minPriceRaw': 500, 'maxDestroyers': 4, 'maxPriceDestroyer': 5500, 'currentMonth': 13}
+{'level': 3, 'volume': 4, 'minPriceRaw': 500, 'maxDestroyers': 4, 'maxPriceDestroyer': 5500, 'currentMonth': 13}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'raw_material': 3, 'price': 500, 'type': 'BuyOffer'}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 3, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 3, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 2, 'price': 500, 'type': 'BuyOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 1, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'price': 5500, 'type': 'AuctionOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'price': 5250, 'type': 'AuctionOffer'}
+{'money': 33948, 'raw_materials': 3, 'destroyers': 4, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 22050, 'raw_materials': 2, 'destroyers': 4, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 4, 'volume': 5, 'minPriceRaw': 400, 'maxDestroyers': 3, 'maxPriceDestroyer': 5000, 'currentMonth': 14}
+{'level': 4, 'volume': 5, 'minPriceRaw': 400, 'maxDestroyers': 3, 'maxPriceDestroyer': 5000, 'currentMonth': 14}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'raw_material': 3, 'price': 450, 'type': 'BuyOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'price': 5000, 'type': 'AuctionOffer'}
+{'money': 25798, 'raw_materials': 6, 'destroyers': 4, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 19550, 'raw_materials': 0, 'destroyers': 5, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 15}
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 15}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 4, 'price': 5750, 'type': 'AuctionOffer'}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 3, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 3, 'type': 'ProduceOffer'}
+{'money': 38898, 'raw_materials': 3, 'destroyers': 3, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 15050, 'raw_materials': 0, 'destroyers': 5, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 1, 'volume': 2, 'minPriceRaw': 800, 'maxDestroyers': 6, 'maxPriceDestroyer': 6500, 'currentMonth': 16}
+{'level': 1, 'volume': 2, 'minPriceRaw': 800, 'maxDestroyers': 6, 'maxPriceDestroyer': 6500, 'currentMonth': 16}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 1, 'price': 650, 'type': 'BuyOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'price': 6000, 'type': 'AuctionOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 3, 'price': 6250, 'type': 'AuctionOffer'}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 3, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 3, 'type': 'ProduceOffer'}
+{'money': 48648, 'raw_materials': 0, 'destroyers': 3, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 23550, 'raw_materials': 0, 'destroyers': 3, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 3, 'volume': 4, 'minPriceRaw': 500, 'maxDestroyers': 4, 'maxPriceDestroyer': 5500, 'currentMonth': 17}
+{'level': 3, 'volume': 4, 'minPriceRaw': 500, 'maxDestroyers': 4, 'maxPriceDestroyer': 5500, 'currentMonth': 17}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'raw_material': 2, 'price': 501, 'type': 'BuyOffer'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 3, 'price': 5000, 'type': 'AuctionOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 3, 'price': 500, 'type': 'BuyOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'price': 5500, 'type': 'AuctionOffer'}
+{'money': 59046, 'raw_materials': 2, 'destroyers': 0, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 24150, 'raw_materials': 3, 'destroyers': 2, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 18}
+{'level': 2, 'volume': 3, 'minPriceRaw': 650, 'maxDestroyers': 5, 'maxPriceDestroyer': 6000, 'currentMonth': 18}
+{'playerId': '5rmKoqwyBSJLVUVm79fb', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 1, 'price': 650, 'type': 'BuyOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'price': 6000, 'type': 'AuctionOffer'}
+{'money': 52046, 'raw_materials': 0, 'destroyers': 2, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'}
+{'money': 28900, 'raw_materials': 2, 'destroyers': 2, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 4, 'volume': 5, 'minPriceRaw': 400, 'maxDestroyers': 3, 'maxPriceDestroyer': 5000, 'currentMonth': 19}
+{'level': 4, 'volume': 5, 'minPriceRaw': 400, 'maxDestroyers': 3, 'maxPriceDestroyer': 5000, 'currentMonth': 19}
+{'player_id': '5rmKoqwyBSJLVUVm79fb', 'aircrafts': 2, 'price': 4999, 'type': 'AuctionOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'raw_material': 2, 'price': 400, 'type': 'BuyOffer'}
+{'playerId': '6497V27JYmTWngUqHatV', 'destroyers': 2, 'roomId': '4eSkyqg69R'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 2, 'type': 'ProduceOffer'}
+{'player_id': '6497V27JYmTWngUqHatV', 'aircrafts': 1, 'price': 5000, 'type': 'AuctionOffer'}
+{'money': 59044, 'raw_materials': 0, 'destroyers': 0, 'manufactories': 3, 'player_id': '5rmKoqwyBSJLVUVm79fb'} 
+{'money': 26000, 'raw_materials': 2, 'destroyers': 3, 'manufactories': 2, 'player_id': '6497V27JYmTWngUqHatV'} 
+{'level': 4, 'volume': 5, 'minPriceRaw': 400, 'maxDestroyers': 3, 'maxPriceDestroyer': 5000, 'currentMonth': 20}
+{'level': 4, 'volume': 5, 'minPriceRaw': 400, 'maxDestroyers': 3, 'maxPriceDestroyer': 5000, 'currentMonth': 20}
+{'level': 4, 'volume': 5, 'minPriceRaw': 400, 'maxDestroyers': 3, 'maxPriceDestroyer': 5000, 'currentMonth': 20}

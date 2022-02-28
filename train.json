@@ -1,0 +1,326 @@
+[
+  {
+    "level": 3,
+    "volume": 4,
+    "minPriceRaw": 500,
+    "maxDestroyers": 4,
+    "maxPriceDestroyer": 5500,
+    "currentMonth": 1
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "raw_material": 2,
+    "price": 500,
+    "money": 10000,
+    "raw_materials": 4,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "aircrafts": 2,
+    "money": 10000,
+    "raw_materials": 4,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "workshops": 1,
+    "price": 5000,
+    "money": 6000,
+    "raw_materials": 2,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "aircrafts": 1,
+    "price": 5500,
+    "money": 3500,
+    "raw_materials": 2,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "raw_material": 1,
+    "price": 500,
+    "money": 10000,
+    "raw_materials": 4,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "aircrafts": 1,
+    "money": 10000,
+    "raw_materials": 4,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "aircrafts": 2,
+    "price": 5500,
+    "money": 8000,
+    "raw_materials": 3,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "level": 2,
+    "volume": 3,
+    "minPriceRaw": 650,
+    "maxDestroyers": 5,
+    "maxPriceDestroyer": 6000,
+    "currentMonth": 2
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "aircrafts": 3,
+    "price": 6000,
+    "money": 8000,
+    "raw_materials": 4,
+    "destroyers": 3,
+    "manufactories": 2
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "aircrafts": 2,
+    "money": 8000,
+    "raw_materials": 4,
+    "destroyers": 3,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "raw_material": 1,
+    "price": 650,
+    "money": 18500,
+    "raw_materials": 4,
+    "destroyers": 1,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "aircrafts": 1,
+    "money": 18500,
+    "raw_materials": 4,
+    "destroyers": 1,
+    "manufactories": 2
+  },
+  {
+    "level": 3,
+    "volume": 4,
+    "minPriceRaw": 500,
+    "maxDestroyers": 4,
+    "maxPriceDestroyer": 5500,
+    "currentMonth": 3
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "raw_material": 2,
+    "price": 500,
+    "money": 19400,
+    "raw_materials": 2,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "aircrafts": 1,
+    "price": 5500,
+    "money": 19400,
+    "raw_materials": 2,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "raw_material": 1,
+    "price": 500,
+    "money": 12150,
+    "raw_materials": 4,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "aircrafts": 2,
+    "money": 12150,
+    "raw_materials": 4,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "aircrafts": 1,
+    "price": 5500,
+    "money": 8150,
+    "raw_materials": 2,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "level": 5,
+    "volume": 6,
+    "minPriceRaw": 300,
+    "maxDestroyers": 2,
+    "maxPriceDestroyer": 4500,
+    "currentMonth": 4
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "raw_material": 3,
+    "price": 300,
+    "money": 20200,
+    "raw_materials": 4,
+    "destroyers": 1,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "raw_material": 3,
+    "price": 300,
+    "money": 9750,
+    "raw_materials": 3,
+    "destroyers": 3,
+    "manufactories": 2
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "aircrafts": 2,
+    "money": 20200,
+    "raw_materials": 4,
+    "destroyers": 1,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "aircrafts": 2,
+    "money": 9750,
+    "raw_materials": 3,
+    "destroyers": 3,
+    "manufactories": 2
+  },
+  {
+    "level": 4,
+    "volume": 5,
+    "minPriceRaw": 400,
+    "maxDestroyers": 3,
+    "maxPriceDestroyer": 5000,
+    "currentMonth": 5
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "aircrafts": 3,
+    "price": 5000,
+    "money": 150,
+    "raw_materials": 4,
+    "destroyers": 5,
+    "manufactories": 2
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "aircrafts": 1,
+    "price": 5000,
+    "money": 11300,
+    "raw_materials": 5,
+    "destroyers": 3,
+    "manufactories": 3
+  },
+  {
+    "level": 3,
+    "volume": 4,
+    "minPriceRaw": 500,
+    "maxDestroyers": 4,
+    "maxPriceDestroyer": 5500,
+    "currentMonth": 6
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "aircrafts": 2,
+    "price": 5500,
+    "money": 5300,
+    "raw_materials": 5,
+    "destroyers": 3,
+    "manufactories": 3
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "raw_material": 1,
+    "price": 500,
+    "money": 10950,
+    "raw_materials": 4,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "aircrafts": 2,
+    "money": 10950,
+    "raw_materials": 4,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "aircrafts": 1,
+    "price": 5500,
+    "money": 6950,
+    "raw_materials": 2,
+    "destroyers": 2,
+    "manufactories": 2
+  },
+  {
+    "level": 5,
+    "volume": 6,
+    "minPriceRaw": 300,
+    "maxDestroyers": 2,
+    "maxPriceDestroyer": 4500,
+    "currentMonth": 7
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "raw_material": 3,
+    "price": 300,
+    "money": 11300,
+    "raw_materials": 5,
+    "destroyers": 1,
+    "manufactories": 3
+  },
+  {
+    "player_id": "5rmKoqwyBSJLVUVm79fb",
+    "aircrafts": 2,
+    "money": 11300,
+    "raw_materials": 5,
+    "destroyers": 1,
+    "manufactories": 3
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "raw_material": 3,
+    "price": 300,
+    "money": 8550,
+    "raw_materials": 3,
+    "destroyers": 3,
+    "manufactories": 2
+  },
+  {
+    "player_id": "6497V27JYmTWngUqHatV",
+    "aircrafts": 2,
+    "money": 8550,
+    "raw_materials": 3,
+    "destroyers": 3,
+    "manufactories": 2
+  },
+  {
+    "level": 4,
+    "volume": 5,
+    "minPriceRaw": 400,
+    "maxDestroyers": 3,
+    "maxPriceDestroyer": 5000,
+    "currentMonth": 8
+  }
+]

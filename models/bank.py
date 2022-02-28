@@ -1,3 +1,4 @@
+from copy import deepcopy
 import random
 from models.offers import AuctionOffer, BuildOffer, BuyOffer, ProduceOffer
 from models.player import Player
@@ -18,6 +19,8 @@ class Bank:
                 "success": False,
                 "text": "You can't build more destroyers",
             }
+
+        print(offer.to_json())
 
         if (
             player.money - 2000 * offer.aircrafts > 0
@@ -46,10 +49,11 @@ class Bank:
                 "success": False,
                 "text": "You have already built manufactories",
             }
+        print(offer.to_json())
         if player.money - 2500 * offer.workshops > 0:
             if (
                 player.manufactories
-                + sum([i.items()[1] for i in player.pending_manufactories])
+                + sum([i["workshops"] for i in player.pending_manufactories])
                 + offer.workshops
                 > 6
             ):
@@ -59,19 +63,23 @@ class Bank:
                     "text": "You can't build more manufactories ",
                 }
             player.withdraw_money(2500 * offer.workshops)
-            player.add_manufactories({current_month + 4: offer.workshops})
+            player.add_manufactories(
+                {"activate_month": current_month + 4, "workshops": offer.workshops}
+            )
             self.build_offers.add(player.id)
             return {"success": True, "bankrupt": False}
 
         return {"success": False, "bankrupt": True}
 
-    def add_auction_offer(self, offer: AuctionOffer):
+    def add_auction_offer(self, offer: AuctionOffer, player: Player):
         if not offer.player_id in self.auction_offers:
             self.auction_offers.update({offer.player_id: offer})
             if offer.price in self.auction_offers_tech:
                 self.auction_offers_tech[offer.price].append(offer)
+                print(offer.to_json())
             else:
                 self.auction_offers_tech[offer.price] = [offer]
+                print(offer.to_json())
             return {"success": True}
 
         return {"success": False, "text": "You have already sent auction offer"}
@@ -112,13 +120,15 @@ class Bank:
         self.auction_offers = set()
         self.auction_offers_tech = {}
 
-    def add_buy_offer(self, offer: BuyOffer):
+    def add_buy_offer(self, offer: BuyOffer, player: Player):
         if not offer.player_id in self.buy_offers:
             self.buy_offers.update({offer.player_id: offer})
             if offer.price in self.buy_offers_tech:
                 self.buy_offers_tech[offer.price].append(offer)
+                print(offer.to_json())
             else:
                 self.buy_offers_tech[offer.price] = [offer]
+                print(offer.to_json())
             return {"success": True}
 
         return {"success": False, "text": "You have already sent buy offer"}
@@ -160,11 +170,14 @@ class Bank:
         kicked_players: dict[str, Player] = {}
         for player in players:
             workshops = players[player].pending_manufactories
-            for month in workshops:
-                if month == current_month:
-                    if not players[player].money - workshops[month] * 2500 > 0:
+            for offer in deepcopy(workshops):
+                if offer["activate_month"] == current_month:
+                    if not players[player].money - offer["workshops"] * 2500 > 0:
                         kicked_players.update({player: players[player]})
                         break
+                    else:
+                        players[player].add_pending_manufactories(offer)
+                        workshops.remove(offer)
 
         return kicked_players
 

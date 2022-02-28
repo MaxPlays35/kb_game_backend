@@ -17,7 +17,7 @@ players: dict[str, Player] = {}
 
 
 def cap(player: Player, current_state):
-    pend = sum([list(i.values())[0] for i in player.pending_manufactories])
+    pend = sum([i["workshops"] for i in player.pending_manufactories])
     score = 0
     score += player.manufactories * 5000
     score += pend * 5000
@@ -104,6 +104,7 @@ class GameNamespace(Namespace):
                     "game_state", room.get_state(), to=data["roomId"], include_self=True
                 )
                 for player in room.players.values():
+                    print(player.get_state())
                     emit("user_state", player.get_state(), to=player.id)
                 emit("all_ready", to=data["roomId"], include_self=True)
 
@@ -226,6 +227,7 @@ class GameNamespace(Namespace):
                     for player in result["kicked_players"]:
                         emit("bankrupt", to=result["kicked_players"][player].peer_id)
                         room.remove_player(player)
+                        players[player].clean()
                         emit(
                             "player_leaved",
                             {"id": data["playerId"]},
@@ -236,19 +238,22 @@ class GameNamespace(Namespace):
                             data["roomId"], sid=result["kicked_players"][player].peer_id
                         )
                     if result["end"]:
-                        players = list(room.players.values())
+                        players_local = list(room.players.values())
                         win_player = sorted(
-                            players, key=lambda item: cap(item), reverse=True
+                            players_local,
+                            key=lambda item: cap(item, room.get_state()),
+                            reverse=True,
                         )[0]
                         emit(
                             "win",
                             {"error": "Victory", "text": "You win!"},
                             to=win_player.peer_id,
                         )
-                        players.remove(win_player)
-                        room.remove_player(player.id)
+                        players_local.remove(win_player)
+                        room.remove_player(win_player.id)
                         leave_room(data["roomId"], sid=win_player.peer_id)
-                        for player in players:
+                        win_player.clean()
+                        for player in list(room.players.values()):
                             emit(
                                 "win",
                                 {"error": "Survived", "text": "You survived!"},
@@ -256,14 +261,18 @@ class GameNamespace(Namespace):
                             )
                             room.remove_player(player.id)
                             leave_room(data["roomId"], sid=player.peer_id)
+                            players[player.id].clean()
                         return
 
                     if len(room.players) == 1:
+                        player = list(room.players.values())[0]
                         emit(
                             "win",
                             {"error": "Victory", "text": "You win!"},
-                            to=list(room.players.values())[0].peer_id,
+                            to=player.peer_id,
                         )
+                        players[player.id].clean()
+
                     else:
                         emit("game_state", room.get_state(), to=data["roomId"])
                         for player in room.players.values():
